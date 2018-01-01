@@ -1,0 +1,30 @@
+.card {
+    margin:auto; width:60%; padding: 20px;
+}
+@media screen and (max-width:500px) {
+    .card{
+        width: 90%;
+    }
+}
+ul li {
+    padding: 20px 0px;
+    cursor: pointer;
+}
+ul li p {
+    width: 25%;
+    display: inline-block;
+    margin: 0px;
+}
+.score-head{
+    font-weight:600; background:#333; color:#fff;
+}
+li .overScore{
+    width:100%; font-weight:600;background:#f1f1f1;
+    border: 5px solid #f1f1f1;
+    position: relative;
+    top: 20px;
+}
+.btn {
+    cursor: pointer;
+    margin:20px;
+}

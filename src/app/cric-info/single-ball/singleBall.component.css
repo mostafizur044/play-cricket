@@ -1,0 +1,16 @@
+.card {
+    margin:auto; width:60%; padding: 20px;
+}
+@media screen and (max-width:500px) {
+    .card{
+        width: 90%;
+    }
+}
+ul li p {
+    width: 50%;
+    display: inline-block;
+    margin: 0px;
+}
+.score-head{
+    font-weight:600; background:#333; color:#fff;
+}

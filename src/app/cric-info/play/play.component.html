@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-12" style="padding:20px 30px;">
+      <div class="card">
+        <div class="card-block text-center">
+          <h3 class="card-title">Play Ground</h3>
+          <div class="row">
+            <div class="col-sm-6 text-left">.
+              <h3>{{match.batting}} : {{totalRun}} / {{wicket}} (EX: {{ext}})</h3>
+              <p>{{match.bowling}} : {{over}}.{{ball}} (Total over {{match.over}})</p>
+            </div>
+            <div class="col-sm-6" style="padding:30px;">
+              <button class="btn btn-info" (click)="bowling()" *ngIf="!gameOver">Ball</button>
+              <a routerLink="/start" class="btn btn-danger" *ngIf="gameOver">Game over</a>
+              <!-- <a routerLink="/match-list" class="btn btn-danger" *ngIf="gameOver">Summary</a> -->
+            </div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item score-head">
+              <p>Ball</p><p style="width:50%">Comentry</p><p>Run</p>
+            </li>
+            <li class="list-group-item" *ngFor="let re of ballByRunArray; let i='index'" style="cursor:pointer;">
+              <a routerLink="/details/{{re.over}}/{{re.ball}}">
+                <p>{{re.over}}.{{re.ball}}</p><p style="width:50%">{{re.commentry}}</p><p>{{re.run}}</p>
+              </a>
+              <div class="overScore" *ngIf="re.ball==6">After {{re.over + 1}}.0 over {{match.batting}}: {{re.totalRun}} / {{re.wicket}}</div>
+            </li>
+          </ul>
+          <div style="padding:30px;">
+            <button class="btn btn-info btn-sm" *ngIf="this.ballByRunArray.length>=10" (click)="loadMore()">Load More</button>
+            <button class="btn btn-danger btn-sm" *ngIf="init>=10" (click)="hideMore()">Previous</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

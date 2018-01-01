@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-12" style="padding:20px 30px;">
+      <div class="card">
+        <div class="card-block text-center">
+          <h3 class="card-title">Start A Match</h3>
+          <div class="row">
+            <div class="col-6">
+              <h5>Choose your team</h5>
+              <div class="form-group">
+                  <select class="form-control" [(ngModel)]="teamA" name="teamA">
+                    <option *ngFor="let o of teamNames" [value]='o'>{{o}}</option>
+                  </select>
+              </div>
+            </div>
+            <div class="col-6">
+                <h5>Choose your opponent</h5>
+                <div class="form-group">
+                    <select class="form-control" [(ngModel)]="teamB" name="teamB">
+                        <option *ngFor="let o of teamNames" [ngValue]="o">{{o}}</option>
+                    </select>
+                  </div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin:auto; width: 50%;">
+            <label>Overs (By default 2)</label>
+            <select class="form-control" [(ngModel)]="over" name="over">
+              <option>2</option>
+              <option>4</option>
+              <option>6</option>
+              <option>8</option>
+              <option>10</option>
+            </select>
+          </div>
+
+          <div style="margin:20px; background:#fcfcfc;padding:20px;">
+            <div>
+                <h5>{{teamA}}</h5>
+                <h5>VS</h5>
+                <h5>{{teamB}}</h5>
+            </div>
+            <div *ngIf="teamA !== ''&& teamB !== ''">
+              <div *ngIf="!loader && !hide">
+                  <span>Umpire going to toss with two captains.....</span> <br> 
+                  <span>{{teamA}} calls <button class="btn btn-info btn-sm" (click)="headCall()">Head</button>
+                  or <button class="btn btn-info btn-sm" (click)="tailCall()">Tail</button></span>
+              </div>
+              <div class="loader" *ngIf="loader"></div>
+              <span *ngIf="a">WOW its {{toss}}. {{teamA}} wins the toss. Do you want to <button class="btn btn-info btn-sm" (click)="batting()">Bat</button>
+                <button class="btn btn-info btn-sm" (click)="bowling()">Bowl</button>?</span>
+              <div *ngIf="b"> 
+                  <span>It is {{toss}}.</span>
+                  <span>{{teamB}} wins the toss. Decide to {{dicision}} first.</span>
+              </div>
+            
+              <div *ngIf="b || c">Start Match <button class="btn btn-success" (click)="startMatch()">Play</button></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+</div>
